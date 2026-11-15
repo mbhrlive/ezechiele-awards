@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ezechiele Awards 2026 · Le mie segnalazioni</title>
+<style>
+  :root {
+    --bg: #f6f2ea; --card: #fffdf8; --ink: #1d1a16; --muted: #6b6359;
+    --line: #e2dacb; --accent: #a3271f; --accent-ink: #fff; --gold: #b8892b;
+    --pick: #fbf3df; --ok: #2f6b3a; --err: #a3271f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141210; --card: #1d1a17; --ink: #f1ebe0; --muted: #a39a8c;
+      --line: #34302a; --accent: #e0b04a; --accent-ink: #1a1508; --gold: #e0b04a;
+      --pick: #2a2414; --ok: #8fc79a; --err: #ff9a8f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header.top { padding: 28px 0 8px; }
+  .kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  h1 { font: 700 30px/1.15 Georgia, "Iowan Old Style", "Times New Roman", serif; margin: 6px 0 8px; }
+  .lead { color: var(--muted); margin: 0; }
+  .banner { margin: 16px 0 0; padding: 10px 12px; border: 1px dashed var(--gold); border-radius: 8px; font-size: 14px; }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* ingresso */
+  .enter { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin: 24px 0; }
+  .enter label { display: block; font-weight: 600; margin-bottom: 8px; }
+  .enter .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .enter select, .enter input { flex: 1 1 200px; min-height: 46px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+  .btn { min-height: 46px; padding: 0 20px; border: 0; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-weight: 700; cursor: pointer; }
+  .btn[disabled] { opacity: .5; cursor: default; }
+  .hint { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+  .link { background: none; border: 0; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font-size: inherit; }
+
+  /* barra strumenti */
+  .who { margin: 18px 0 0; font-size: 15px; }
+  .tools { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 12px 0 10px; border-bottom: 1px solid var(--line); }
+  .search { width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 23px; background: var(--card); }
+  .seg { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .seg button { min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); cursor: pointer; font-size: 14px; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .seg .gap { flex: 1; }
+
+  /* lista */
+  ul.list { list-style: none; margin: 0; padding: 0 0 96px; }
+  li.month { padding: 22px 0 6px; font: 700 13px/1 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  li.film { border-bottom: 1px solid var(--line); }
+  li.film.on { background: var(--pick); margin: 0 -10px; padding: 0 10px; border-radius: 8px; border-bottom-color: transparent; }
+  .pick { display: flex; align-items: flex-start; gap: 12px; width: 100%; text-align: left; background: none; border: 0; padding: 12px 0; cursor: pointer; min-height: 48px; }
+  .box { flex: 0 0 24px; height: 24px; margin-top: 1px; border: 2px solid var(--muted); border-radius: 6px; display: grid; place-items: center; }
+  .on .box { background: var(--accent); border-color: var(--accent); }
+  .on .box::after { content: ""; width: 6px; height: 11px; border: solid var(--accent-ink); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translateY(-1px); }
+  .t { display: block; font-weight: 600; overflow-wrap: anywhere; }
+  .m { display: block; color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+  .extra { padding: 0 0 14px 36px; }
+  .extra p { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips button { min-height: 34px; padding: 0 12px; border: 1px solid var(--muted); border-radius: 17px; background: transparent; cursor: pointer; font-size: 14px; }
+  .chips button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1a1508; font-weight: 600; }
+  .note { width: 100%; margin-top: 10px; min-height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+  .empty { padding: 40px 0; text-align: center; color: var(--muted); }
+
+  /* stato in basso */
+  .status { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--card); border-top: 1px solid var(--line); }
+  .status .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; }
+  .count { font-weight: 700; }
+  .save { font-size: 14px; color: var(--muted); text-align: right; }
+  .save.ok { color: var(--ok); }
+  .save.err { color: var(--err); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">Cineforum Ezechiele</div>
+    <h1>Ezechiele Awards 2026</h1>
+    <p class="lead">Segna i film usciti nel 2026 che secondo te meritano un premio. Puoi tornare quando vuoi e cambiare le tue scelte.</p>
+    <p class="banner" id="demo" hidden>Modalità prova: la pagina non è ancora collegata al foglio. Le scelte restano solo su questo dispositivo.</p>
+  </header>
+
+  <main>
+    <p class="empty" id="loading">Carico la lista dei film…</p>
+    <p class="empty" id="fatal" hidden></p>
+
+    <section class="enter" id="enter" hidden>
+      <form id="enterForm">
+        <label for="nameField" id="nameLabel">Chi sei?</label>
+        <div class="row">
+          <select id="nameSelect" hidden></select>
+          <input id="nameInput" type="text" maxlength="40" autocomplete="given-name" placeholder="Il tuo nome" hidden>
+          <button class="btn" type="submit">Entra</button>
+        </div>
+        <p class="hint">Non serve password. Scegli il tuo nome e ritrovi le segnalazioni che hai già fatto.</p>
+        <p class="hint" id="enterErr" style="color:var(--err)" hidden></p>
+      </form>
+    </section>
+
+    <section id="app" hidden>
+      <p class="who">Ciao, <strong id="whoName"></strong>. <button class="link" id="change" type="button">Non sei tu?</button></p>
+      <div class="tools">
+        <input class="search" id="q" type="search" placeholder="Cerca per titolo o regista" autocomplete="off" aria-label="Cerca per titolo o regista">
+        <div class="seg">
+          <button type="button" id="fAll" aria-pressed="true">Tutti</button>
+          <button type="button" id="fMine" aria-pressed="false">I miei</button>
+          <span class="gap"></span>
+          <button type="button" id="sDate" aria-pressed="true">Per uscita</button>
+          <button type="button" id="sAz" aria-pressed="false">A–Z</button>
+        </div>
+      </div>
+      <ul class="list" id="list"></ul>
+      <p class="empty" id="none" hidden>Nessun film trovato.</p>
+    </section>
+  </main>
+</div>
+
+<div class="status" id="status" hidden>
+  <div class="wrap">
+    <span class="count" id="count"></span>
+    <span class="save" id="save" role="status" aria-live="polite"></span>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var API = ((window.EZ_CONFIG || {}).apiUrl || '').trim();
+  var DEMO = !API;
+  var MESI = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+  var CATS_DEMO = ['Miglior film', 'Interpretazione', 'Sceneggiatura', 'Impatto sonoro', 'Impatto visivo', 'Soul food'];
+
+  var films = [], team = [], cats = [];
+  var me = '', entering = false;
+  var prefs = {};           // id -> { cats: [..], note: '' }
+  var view = { q: '', mine: false, az: false };
+  var saveTimer = null, saving = false, dirty = false, failed = false;
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------- memoria del dispositivo ---------- */
+  function lsGet(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  function key(kind, name) { return 'ez26-' + kind + '-' + String(name).toLowerCase(); }
+
+  /* ---------- colloquio con lo script di Google ---------- */
+  function api(payload) {
+    if (DEMO) return demoApi(payload);
+    return fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (!r.ok) throw new Error('Errore di rete (' + r.status + ')');
+      return r.json();
+    }).then(function (j) {
+      if (!j || j.ok === false) throw new Error((j && j.error) || 'Errore');
+      return j;
+    });
+  }
+
+  function demoApi(p) {
+    if (p.action === 'init') {
+      return fetch('film-demo.json').then(function (r) { return r.json(); }).then(function (j) {
+        return { ok: true, films: j.films, team: [], cats: CATS_DEMO };
+      });
+    }
+    if (p.action === 'prefs') return Promise.resolve({ ok: true, name: p.name, prefs: lsGet(key('demo', p.name)) || [] });
+    if (p.action === 'save') { lsSet(key('demo', p.name), p.prefs); return Promise.resolve({ ok: true, name: p.name, saved: p.prefs.length }); }
+    return Promise.reject(new Error('Azione sconosciuta'));
+  }
+
+  /* ---------- avvio ---------- */
+  function start() {
+    if (DEMO) $('demo').hidden = false;
+    var cached = lsGet('ez26-init');
+    if (cached && cached.films && cached.films.length) { applyInit(cached); ready(); }
+    api({ action: 'init' }).then(function (j) {
+      var fresh = { films: j.films || [], team: j.team || [], cats: j.cats || [] };
+      var changed = JSON.stringify(fresh) !== JSON.stringify({ films: films, team: team, cats: cats });
+      lsSet('ez26-init', fresh);
+      if (!changed) return;
+      applyInit(fresh);
+      if (me) render(); else ready();
+    }).catch(function (err) {
+      if (films.length) return;      // si va avanti con la copia salvata
+      $('loading').hidden = true;
+      $('fatal').hidden = false;
+      $('fatal').textContent = 'Non riesco a caricare la lista dei film. Controlla la connessione e ricarica la pagina. (' + err.message + ')';
+    });
+  }
+
+  function applyInit(d) {
+    films = d.films.map(function (f) {
+      return {
+        id: String(f.id), titolo: f.titolo || '', regia: f.regia || '', origine: f.origine || '',
+        anno: f.anno || '', uscita: f.uscita || '',
+        key: norm((f.titolo || '') + ' ' + (f.regia || ''))
+      };
+    });
+    team = d.team || [];
+    cats = d.cats || [];
+  }
+
+  function ready() {
+    $('loading').hidden = true;
+    if (me || entering) return;
+    var saved = lsGet('ez26-name');
+    var okSaved = saved && (!team.length || team.some(function (n) { return n.toLowerCase() === String(saved).toLowerCase(); }));
+    if (okSaved) { enter(saved); return; }
+    showEnter();
+  }
+
+  function showEnter() {
+    var sel = $('nameSelect'), inp = $('nameInput');
+    if (team.length) {
+      sel.innerHTML = '';
+      sel.appendChild(new Option('Scegli il tuo nome…', ''));
+      team.forEach(function (n) { sel.appendChild(new Option(n, n)); });
+      sel.hidden = false; inp.hidden = true;
+      $('nameLabel').setAttribute('for', 'nameSelect');
+    } else {
+      sel.hidden = true; inp.hidden = false;
+      $('nameLabel').setAttribute('for', 'nameInput');
+    }
+    $('app').hidden = true; $('status').hidden = true;
+    $('enter').hidden = false;
+  }
+
+  /* ---------- ingresso con il nome ---------- */
+  function enter(name) {
+    name = String(name || '').replace(/\s+/g, ' ').trim();
+    if (!name) return;
+    var btn = document.querySelector('#enterForm .btn');
+    btn.disabled = true; $('enterErr').hidden = true;
+    entering = true;
+    api({ action: 'prefs', name: name }).then(function (j) {
+      me = j.name || name;
+      lsSet('ez26-name', me);
+      prefs = {};
+      (j.prefs || []).forEach(function (p) { prefs[String(p.id)] = { cats: (p.cats || []).slice(), note: p.note || '' }; });
+      // scelte fatte su questo dispositivo e mai arrivate al foglio
+      var draft = lsGet(key('draft', me));
+      dirty = false; failed = false;
+      if (draft && draft.dirty && draft.prefs) { prefs = draft.prefs; dirty = true; }
+      $('whoName').textContent = me;
+      $('enter').hidden = true; $('app').hidden = false; $('status').hidden = false;
+      render(); updateStatus();
+      if (dirty) scheduleSave(200);
+    }).catch(function (err) {
+      $('loading').hidden = true;
+      showEnter();
+      $('enterErr').hidden = false;
+      $('enterErr').textContent = 'Non riesco a entrare: ' + err.message;
+    }).then(function () { btn.disabled = false; entering = false; });
+  }
+
+  /* ---------- lista ---------- */
+  function norm(s) { return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+
+  function visible() {
+    var q = norm(view.q.trim());
+    var out = films.filter(function (f) {
+      if (view.mine && !prefs[f.id]) return false;
+      return !q || f.key.indexOf(q) !== -1;
+    });
+    if (view.az) out.sort(function (a, b) { return a.titolo.localeCompare(b.titolo, 'it'); });
+    else out.sort(function (a, b) { return (a.uscita || '9999').localeCompare(b.uscita || '9999') || a.titolo.localeCompare(b.titolo, 'it'); });
+    return out;
+  }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function monthLabel(iso) {
+    var m = /^(\d{4})-(\d{2})/.exec(iso || '');
+    return m ? MESI[+m[2] - 1] + ' ' + m[1] : 'Senza data';
+  }
+
+  function render() {
+    var list = $('list'), rows = visible(), last = null, frag = document.createDocumentFragment();
+    rows.forEach(function (f) {
+      if (!view.az) {
+        var lab = monthLabel(f.uscita);
+        if (lab !== last) { frag.appendChild(el('li', 'month', lab)); last = lab; }
+      }
+      frag.appendChild(filmRow(f));
+    });
+    list.innerHTML = '';
+    list.appendChild(frag);
+    $('none').hidden = rows.length > 0;
+    $('none').textContent = view.mine && !view.q.trim() ? 'Non hai ancora segnalato nessun film.' : 'Nessun film trovato.';
+  }
+
+  function filmRow(f) {
+    var li = el('li', 'film');
+    li.dataset.id = f.id;
+    var b = el('button', 'pick');
+    b.type = 'button';
+    b.appendChild(el('span', 'box'));
+    var txt = el('span');
+    txt.appendChild(el('span', 't', f.titolo));
+    txt.appendChild(el('span', 'm', [f.regia, f.origine, f.anno].filter(Boolean).join(' · ')));
+    b.appendChild(txt);
+    li.appendChild(b);
+    paint(li);
+    return li;
+  }
+
+  function paint(li) {
+    var id = li.dataset.id, p = prefs[id];
+    li.classList.toggle('on', !!p);
+    li.querySelector('.pick').setAttribute('aria-pressed', p ? 'true' : 'false');
+    var ex = li.querySelector('.extra');
+    if (!p) { if (ex) ex.remove(); return; }
+    if (!ex) {
+      ex = el('div', 'extra');
+      ex.appendChild(el('p', '', 'Per quale premio? (facoltativo)'));
+      var chips = el('div', 'chips');
+      cats.forEach(function (c) {
+        var cb = el('button', 'chip', c);
+        cb.type = 'button'; cb.dataset.cat = c;
+        chips.appendChild(cb);
+      });
+      ex.appendChild(chips);
+      var note = el('input', 'note');
+      note.type = 'text'; note.maxLength = 200;
+      note.placeholder = 'Nota facoltativa, per esempio il nome dell’interprete';
+      note.setAttribute('aria-label', 'Nota');
+      note.value = p.note || '';
+      ex.appendChild(note);
+      li.appendChild(ex);
+    }
+    ex.querySelectorAll('.chip').forEach(function (cb) {
+      cb.setAttribute('aria-pressed', p.cats.indexOf(cb.dataset.cat) !== -1 ? 'true' : 'false');
+    });
+  }
+
+  /* ---------- salvataggio ---------- */
+  function changed() {
+    dirty = true; failed = false;
+    lsSet(key('draft', me), { dirty: true, prefs: prefs });
+    updateStatus();
+    scheduleSave(1200);
+  }
+
+  function scheduleSave(ms) {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(flush, ms);
+  }
+
+  function flush() {
+    clearTimeout(saveTimer);
+    if (saving || !dirty || !me) return;
+    saving = true; dirty = false; updateStatus();
+    var who = me;
+    var payload = Object.keys(prefs).map(function (id) {
+      return { id: id, cats: prefs[id].cats, note: prefs[id].note };
+    });
+    api({ action: 'save', name: who, prefs: payload }).then(function () {
+      saving = false; failed = false;
+      if (who === me && !dirty) lsDel(key('draft', who));
+      updateStatus();
+      if (dirty) scheduleSave(300);
+    }).catch(function () {
+      saving = false; failed = true; dirty = true;
+      updateStatus();
+    });
+  }
+
+  function updateStatus() {
+    var n = Object.keys(prefs).length;
+    $('count').textContent = n === 1 ? '1 film segnalato' : n + ' film segnalati';
+    $('fMine').textContent = 'I miei (' + n + ')';
+    var s = $('save');
+    s.className = 'save';
+    s.innerHTML = '';
+    if (failed) {
+      s.classList.add('err');
+      s.appendChild(document.createTextNode('Non salvato. '));
+      var r = el('button', 'link', 'Riprova');
+      r.type = 'button';
+      r.addEventListener('click', function () { failed = false; flush(); });
+      s.appendChild(r);
+    } else if (saving || dirty) {
+      s.textContent = 'Salvataggio…';
+    } else {
+      s.classList.add('ok');
+      s.textContent = DEMO ? 'Salvato su questo dispositivo' : 'Salvato';
+    }
+  }
+
+  /* ---------- eventi ---------- */
+  $('enterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = team.length ? $('nameSelect').value : $('nameInput').value;
+    if (!String(name).trim()) {
+      $('enterErr').hidden = false;
+      $('enterErr').textContent = team.length ? 'Scegli il tuo nome dall’elenco.' : 'Scrivi il tuo nome.';
+      return;
+    }
+    enter(name);
+  });
+
+  $('change').addEventListener('click', function () {
+    if (dirty || saving) flush();
+    me = ''; prefs = {};
+    lsDel('ez26-name');
+    $('nameInput').value = '';
+    showEnter();
+  });
+
+  $('list').addEventListener('click', function (e) {
+    var li = e.target.closest('li.film');
+    if (!li) return;
+    var id = li.dataset.id;
+    var chip = e.target.closest('.chip');
+    if (chip) {
+      var p = prefs[id]; if (!p) return;
+      var i = p.cats.indexOf(chip.dataset.cat);
+      if (i === -1) p.cats.push(chip.dataset.cat); else p.cats.splice(i, 1);
+      paint(li); changed();
+      return;
+    }
+    if (e.target.closest('.pick')) {
+      if (prefs[id]) delete prefs[id]; else prefs[id] = { cats: [], note: '' };
+      paint(li); changed();
+    }
+  });
+
+  $('list').addEventListener('input', function (e) {
+    if (!e.target.classList.contains('note')) return;
+    var li = e.target.closest('li.film');
+    var p = li && prefs[li.dataset.id];
+    if (!p) return;
+    p.note = e.target.value;
+    changed();
+  });
+
+  $('q').addEventListener('input', function (e) { view.q = e.target.value; render(); });
+
+  function seg(a, b, prop, val) {
+    $(a).addEventListener('click', function () {
+      view[prop] = val;
+      $(a).setAttribute('aria-pressed', 'true');
+      $(b).setAttribute('aria-pressed', 'false');
+      render();
+    });
+  }
+  seg('fAll', 'fMine', 'mine', false);
+  seg('fMine', 'fAll', 'mine', true);
+  seg('sDate', 'sAz', 'az', false);
+  seg('sAz', 'sDate', 'az', true);
+
+  window.addEventListener('beforeunload', function (e) {
+    if (!DEMO && (dirty || saving)) { e.preventDefault(); e.returnValue = ''; }
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden' && dirty) flush();
+  });
+
+  start();
+})();
+</script>
+</body>
+</html>
